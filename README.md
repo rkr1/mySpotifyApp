@@ -11,3 +11,4 @@ Web app that uses the Spotify API
       
 ## Notes
 * This is an interview project.  It's not complete.
+* It looks better in Chrome.
