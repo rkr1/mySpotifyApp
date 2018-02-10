@@ -13,9 +13,15 @@ var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
 
 // localhost version
-var client_id = 'contact me for client id'; // Your client id
-var client_secret = 'contact me for secret'; // Your secret
 var redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
+
+var client_id;
+var client_secret;
+
+if ((client_id === undefined) || (client_secret === undefined)) {
+    console.log("contact the developer for the client_id and/or client_secret");
+    return -1;
+}
 
 /**
  * Generates a random string containing numbers and letters
