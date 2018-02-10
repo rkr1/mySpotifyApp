@@ -446,10 +446,12 @@ var replaceHash = function() {
     }
 };
 
+/*
 $.extend($.scrollTo.defaults, {
   axis: 'y',
   duration: 500
 });
+*/
 
 $(document).ready(function() {
     // search_click_disabled prevents the search button from being triggered
