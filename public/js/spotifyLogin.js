@@ -47,11 +47,15 @@ var getHashParams = function() {
 var checkLogin = function() {
     var params = getHashParams();
 
-    access_token = params.access_token;
     refresh_token = params.refresh_token;
+    var params_access_token = params.access_token;
     var error = params.error;
     var home = params.home;
-    
+
+    if (params_access_token) {
+        access_token = params_access_token;
+    }
+
     if (error) {
         alert('There was an error during the authentication');
     } else {
