@@ -1,0 +1,14 @@
+{
+  "name": "mySpotifyApp",
+  "version": "1.0.1",
+  "description": "mySpotifyApp localhost version",
+  "main": "server_secrets.js",
+  "scripts": {
+    "start": "node server_localhost.js"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.2",
+    "request": "^2.83.0"
+  }
+}
