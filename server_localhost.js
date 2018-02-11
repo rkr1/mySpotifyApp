@@ -11,16 +11,16 @@ var express = require('express'); // Express web server framework
 var request = require('request'); // "Request" library
 var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
-
+                
 // localhost version
 var redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
 
-var client_id;
-var client_secret;
+var client_id = process.env.CLIENT_ID;
+var client_secret = process.env.CLIENT_SECRET;
 
 if ((client_id === undefined) || (client_secret === undefined)) {
-    console.log("contact the developer for the client_id and/or client_secret");
-    return -1;
+  console.log("Contact the developer for the client_id and/or client_secret or run client_vars.bat before npm start");
+  return -1;
 }
 
 /**

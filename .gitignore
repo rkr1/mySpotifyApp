@@ -59,4 +59,7 @@ typings/
 
 # vim files
 .*.swp
+
+# Windows script to set the client env vars
+client_vars.bat
 *~
