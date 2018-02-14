@@ -37,7 +37,7 @@ var isString = function(str) {
     if ((str !== undefined) && (str != null) && (typeof(str) === "string") && (str.length > 0)) {
         return true;
     } else {
-        debugPrint("isString = false");
+        //debugPrint("isString = false");
         return false;
     }
 };
@@ -117,7 +117,6 @@ var makeRequest = function(url, data, successHandler, errorHandler)
 
 var artistSuggestionsGet = function(query, cb) {
     if (isString(query)) {
-        //debugPrint("query: " + query);
         searchSpotify(
             query,
             'artist',
@@ -125,7 +124,6 @@ var artistSuggestionsGet = function(query, cb) {
             5,
             function(data) {
                 if (data && data.artists && data.artists.items) {
-                    // debugPrint(data.artists.items.length + " suggestions retrieved");
                     cb(data.artists.items);
                 } else {
                     cb([]);
@@ -155,10 +153,8 @@ var artistSearch = function() {
 };
 
 var artistListRender = function(data) {
-    debugPrint("artistListRender");
     showArtists();
     if (data && data.artists && data.artists.items && (data.artists.items.length > 0)) {
-        debugPrint(data.artists.items.length + " artists retrieved");
 
         // FIXME: use ReactJS to do this
         $.each(data.artists.items, function(i, item) {
@@ -168,7 +164,6 @@ var artistListRender = function(data) {
         // FIXME: implement this
         /*
         if (data.artists.next) {
-            debugPrint("appendMore");
             // https://api.spotify.com/v1/search?query=Michael+Jackson&type=artist&market=US&offset=10&limit=10
             $('#artists-container').append('<a href="' + data.artists.next + '" class="btn btn-primary-outline btn-center">More</a>');
         }
@@ -184,7 +179,6 @@ var albumsByArtistIDGet = function(artist_id) {
         //showAlbums();
         $('#albums-container').empty();
         hideAlbums();
-        debugPrint("artist_id: " + artist_id);
         albumsByArtistIDSpotify(artist_id, albumsByArtistIDSuccess, albumsByArtistIDError);
     }
 };
@@ -224,21 +218,17 @@ var albumsByArtistIDSuccess = function(data) {
     showAlbums();
     var header_str = "Albums";
     if (data && data.items && (data.items.length > 0)) {
-        debugPrint(data.items.length + " albums retrieved");
 
-        //debugPrint("album by: " + data.items[0].artists[0].name);
         if (data.items[0] && data.items[0].artists && (data.items[0].artists.length > 0) &&
             data.items[0].artists[0].name && (data.items[0].artists[0].name.length > 0)) {
             header_str += " by " + data.items[0].artists[0].name;
         }
         
         $.each(data.items, function(i, item) {
-            debugPrint("album: " + item.name);
             $('#albums-container').append(renderItem(i, item, 'album'));
         });
     } else {
         $('#albums-container').append('<h5>No albums found</h5>');
-        debugPrint("No albums found");
     }
     $('#albums-header-text').text(header_str);
     // scrollTo isn't having quite the effect I wanted
@@ -246,14 +236,12 @@ var albumsByArtistIDSuccess = function(data) {
 };
 
 var albumsByArtistIDError = function() {
-    debugPrint("albumsByArtistIDError");
     // TODO: Render error, ignore, or retry
 };
 
 var tracksByAlbumGet = function(album_id) {
     if (isString(album_id)) {
         $('#tracks-list').empty();
-        // debugPrint("album_id: " + album_id);
         tracksByAlbumSpotify(album_id, tracksByAlbumSuccess, genericErrorHandler);
     }
 };
@@ -264,7 +252,6 @@ var tracksByAlbumSuccess = function(data) {
     var year = '';
 
     if (data) {
-        debugPrint("tracksByAlbum retrieved " + data.tracks.items.length + " items");
 
         if (data.name) {
             album_name = data.name;
@@ -292,7 +279,6 @@ var tracksByAlbumSuccess = function(data) {
             $('#tracks-list').append(li);
         }
     } else {
-        debugPrint("No album details found");
         let li = $('<li/>').text('No album details found');
         $('#tracks-list').append(li);
     }
@@ -400,20 +386,19 @@ if(!window.HashChangeEvent)(function(){
     });
 }());
 
+/*
 if ("onhashchange" in window) {
     //debugPrint("The browser supports the hashchange event!");
 }
+*/
 
 var locationHashChanged = function() {
-    //debugPrint("location.hash: ", location.hash);
-
     if (location.hash) {
         if (location.hash.indexOf("artist", 0) > 0) {
             var artist_id;
             var spl = location.hash.split("#artist-id=");
             if (spl.length > 0) {
                 artist_id = spl[1];
-                debugPrint("artist in hash: " + artist_id);
                 hideAlbumDetails();
                 showAlbums();
                 albumsByArtistIDGet(artist_id);
@@ -423,7 +408,6 @@ var locationHashChanged = function() {
             var spl = location.hash.split("#album-id=");
             if (spl.length > 0) {
                 album_id = spl[1];
-                //debugPrint("album in hash: " + album_id);
                 showAlbumDetails();
                 tracksByAlbumGet(album_id);
             }
@@ -433,7 +417,6 @@ var locationHashChanged = function() {
             //showArtists();
         }
     } else {
-        //debugPrint("no hash");
         hideAlbumDetails();
         hideAlbums();
         //showArtists();
@@ -535,6 +518,11 @@ $(document).ready(function() {
         hideArtists();
         hideSearchClear();
         replaceHash();
+    });
+
+    $('#about-modal').on('show.bs.modal', function (e) {
+        var loadurl = $(e.relatedTarget).data('load-url');
+        $(this).find('.modal-content').load(loadurl);
     });
 
     checkLogin();

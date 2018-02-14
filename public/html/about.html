@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta copyright="Copyright (c) 2018 Renee K. Rodgers">
+  </head>
+  <body>
+    <!-- About modal -->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="about-modal-title">About mySpotifyApp</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>This is an interview project.  The requirements (intentionally paraphrased) include:</p>
+        <ul>
+          <li>Build a web app that uses the Spotify API. The user should be able to:</li>
+            <ul>
+              <li>Search for artists</li>
+              <ul><li>Display a dropdown with search suggestions while the user types</li></ul>
+              <li>Show a list of albums when the user clicks on an artist</li>
+              <li>Show the details of the album, including tracks and duration, when the user clicks on an album</li>
+            </ul>
+          <li>Use ReactJS <span style="color:red;"><i>(not done)</i></span></li>
+            <ul><li>See note below under <i>What's next</i></li></ul>
+          <li>Use any other framework, standard code, etc.  This project uses:</li>
+            <ul>
+              <li>Bootstrap 4</li>
+              <li>jQuery</li>
+              <li>Node.js</li>
+              <li>Autocomplete library from www.algolia.com</li>
+              <li>Example login code from Spotify</li>
+            </ul>
+            <li>Preserves browser state, i.e. history buttons work <span style="color:red;"><i>(sort of works)</i></span></li>
+            <ul>
+              <li>This sort of works, based on a made-up-hacked-up solution I came up with based on hashes.</li>
+              <li><b>The correct solution requires the use of router code.</b></li>
+            </ul>
+          <li>Bonus</li>
+            <ul>
+              <li>Compatible with all modern browsers</li>
+              <ul><li>Intentionally used Bootstrap, which is designed for that purpose</li></ul>
+              <li>Use of SASS/LESS and BEM would be appreciated <span style="color:red"><i>(not done)</i></span></li>
+              <li>UX evaluated</li>
+                <ul>
+                  <li>Tried to make this app flow well without specifically copying any other examples on Spotify's developer site</li>
+                  <li>Better colors could be used</li>
+                  <li>Only retrieves the first x search matches, needs to implement "get next"</li>
+                </ul>
+              </li>
+            </ul>
+          <li>What's next</li>
+            <ul>
+              <li>Port or rewrite with ReactJS</li>
+                <ul><li>Since I have not used ReactJS before and had a short deadline, I decided to get something working using methods I do know, then port to ReactJS.</li></ul>
+              <li>Add router code or use a framework</li>
+                <ul><li>My last use of router code was about four years ago.  The fact that this is what I was missing finally occurred to me as I was nearing my deadline.</li></ul>
+              <li>Make better use of Bootstrap</li>
+                <ul>
+                  <li>Dev and testing were done with Chrome, alignment needs to be improved in Edge</li>
+                  <li>Code needs to be added for collapsing the header on mobile</li>
+                  <li>Remove the CSS short-cut hacks I added just to finish.  That is not proper design.</li>
+                </ul>
+            </ul>
+        </ul>
+      </div>
+      <div class="modal-footer justify-content-between" style="height:20px;">
+        <span style="font-size:10px; text-align:left;">Version 2.01</span>
+        <span class="float-right" style="font-size:10px; text-align:end;">(c) 2018 Renee K. Rodgers</span>
+      </div>
+    </div>
+  </body>
+</html>
+
