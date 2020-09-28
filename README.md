@@ -12,5 +12,6 @@ Web app that uses the Spotify API
 * Open a browser and browse to http://localhost:8888
       
 ## Notes
-* This is an interview project.  It's not complete.
-* It looks better in Chrome.
+* This is an interview project.
+* public/html/about.html explains the requirements, what was done, and what is left to do.
+
