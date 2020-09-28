@@ -13,5 +13,5 @@ Web app that uses the Spotify API
       
 ## Notes
 * This is an interview project.
-* public/html/about.html explains the requirements, what was done, and what is left to do.
+* [about.html](public/html/about.html), which is a pop-up in the running app, explains the requirements, what was done, and what is left to do.
 
